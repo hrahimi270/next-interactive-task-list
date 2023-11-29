@@ -4,7 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate-types": "npx supabase gen types typescript --project-id cihnwnuwzqepxycsinol --schema public > types_db.ts"
+    "generate-types": "npx supabase gen types typescript --project-id YOUR_SUPABASE_APP_ID --schema public > types_db.ts"
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "^0.8.7",
