@@ -15,7 +15,7 @@ interface SidebarLinkProps {
   path: string;
   text: string;
   icon?: React.ReactNode;
-  count?: number;
+  count?: string;
   color?: LinkColors;
 }
 
