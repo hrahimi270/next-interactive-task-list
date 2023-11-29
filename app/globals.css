@@ -90,6 +90,10 @@
     transition: all 0.6s ease;
 }
 
+.checkbox .checkbox__input:checked+.checkbox__label .checkbox__label__text {
+    text-decoration: line-through;
+}
+
 
 @keyframes checkboxFrames {
     50% {
