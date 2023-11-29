@@ -1,24 +1,9 @@
 import { Fragment } from "react";
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
 import PageTitle from "@/components/PageTitle";
 import PageAddTask from "@/components/PageAddTask";
 import PageTasksContainer from "@/components/PageTasksContainer";
 
-export default async function Index() {
-  const cookieStore = cookies();
-
-  const canInitSupabaseClient = () => {
-    try {
-      createClient(cookieStore);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
-
-  const isSupabaseConnected = canInitSupabaseClient();
-
+export default async function TasksPage() {
   return (
     <Fragment>
       {/* page title */}

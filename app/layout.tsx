@@ -1,7 +1,9 @@
 import { GeistSans } from "geist/font/sans";
-import "./globals.css";
+import SupabaseProvider from "@/components/SupabaseProvider";
 import Sidebar from "@/components/Sidebar";
 import PageContent from "@/components/PageContent";
+import "./globals.css";
+import AuthModal from "@/components/AuthModal";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -21,10 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.className}>
       <body>
-        <main className="min-h-screen flex">
-          <Sidebar />
-          <PageContent>{children}</PageContent>
-        </main>
+        <SupabaseProvider>
+          <AuthModal />
+          <main className="min-h-screen flex">
+            <Sidebar />
+            <PageContent>{children}</PageContent>
+          </main>
+        </SupabaseProvider>
       </body>
     </html>
   );
