@@ -21,44 +21,12 @@ export async function getSession() {
   }
 }
 
-export async function getTasks() {
+export async function getAllTasks() {
   const supabase = createServerSupabaseClient();
 
   const { data, count, error } = await supabase
     .from("tasks")
     .select("*")
-    .order("created_at", { ascending: true });
-
-  if (error) {
-    console.log(error.message);
-  }
-
-  return { data, count };
-}
-
-export async function getImportantTasks() {
-  const supabase = createServerSupabaseClient();
-
-  const { data, count, error } = await supabase
-    .from("tasks")
-    .select("*")
-    .eq("is_important", true)
-    .order("created_at", { ascending: true });
-
-  if (error) {
-    console.log(error.message);
-  }
-
-  return { data, count };
-}
-
-export async function getDailyTasks() {
-  const supabase = createServerSupabaseClient();
-
-  const { data, count, error } = await supabase
-    .from("tasks")
-    .select("*")
-    .eq("is_daily", true)
     .order("created_at", { ascending: true });
 
   if (error) {

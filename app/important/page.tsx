@@ -2,10 +2,10 @@ import { Fragment } from "react";
 import PageTitle from "@/components/PageTitle";
 import PageAddTask from "@/components/PageAddTask";
 import PageTasksContainer from "@/components/PageTasksContainer";
-import { getImportantTasks } from "@/lib/supabase-server";
+import { getAllTasks } from "@/lib/supabase-server";
 
 export default async function TasksPage() {
-  const [tasks] = await Promise.all([getImportantTasks()]);
+  const [tasks] = await Promise.all([getAllTasks()]);
 
   return (
     <Fragment>
@@ -14,9 +14,10 @@ export default async function TasksPage() {
 
       {/* page tasks container */}
       <PageTasksContainer
-        tasks={tasks?.data}
+        serverTasks={tasks?.data}
         emptyStateImage="/empty-important.svg"
         emptyStateText="Your important tasks are empty!"
+        isImportantPage
       />
 
       {/* add task as an important task */}
