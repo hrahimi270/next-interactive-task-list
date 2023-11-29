@@ -2,25 +2,25 @@ import { Fragment } from "react";
 import PageTitle from "@/components/PageTitle";
 import PageAddTask from "@/components/PageAddTask";
 import PageTasksContainer from "@/components/PageTasksContainer";
-import { getTasks } from "@/lib/supabase-server";
+import { getDailyTasks } from "@/lib/supabase-server";
 
 export default async function TasksPage() {
-  const [tasks] = await Promise.all([getTasks()]);
+  const [tasks] = await Promise.all([getDailyTasks()]);
 
   return (
     <Fragment>
       {/* page title */}
-      <PageTitle title="Tasks" />
+      <PageTitle title="Daily Tasks" />
 
       {/* page tasks container */}
       <PageTasksContainer
         tasks={tasks?.data}
-        emptyStateImage="/empty-tasks.svg"
-        emptyStateText="Your tasks are empty!"
+        emptyStateImage="/empty-myday.svg"
+        emptyStateText="Your daily tasks are empty!"
       />
 
-      {/* add task */}
-      <PageAddTask />
+      {/* add task as an daily task */}
+      <PageAddTask isDaily />
     </Fragment>
   );
 }

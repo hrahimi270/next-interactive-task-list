@@ -3,15 +3,44 @@
 import classNames from "classnames";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
+import { useSupabase } from "./SupabaseProvider";
 
-export default function PageAddTask() {
+interface PageAddTaskProps {
+  isImportant?: boolean;
+  isDaily?: boolean;
+}
+
+export default function PageAddTask(props: PageAddTaskProps) {
+  const { supabase } = useSupabase();
   const [value, setValue] = useState("");
 
   function handleKeydown(event: React.KeyboardEvent<HTMLInputElement>) {
-    const { key, keyCode } = event;
+    const { key } = event;
 
-    if (key === "Enter" && keyCode === 13) {
-      console.log("add task");
+    if (key === "Enter") {
+      handleAddTask();
+    }
+  }
+
+  async function handleAddTask() {
+    const { isImportant, isDaily } = props;
+
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const userId = session?.user?.id;
+
+    if (!userId) return;
+
+    const { error } = await supabase.from("tasks").insert({
+      title: value,
+      is_important: isImportant,
+      is_daily: isDaily,
+      user_id: userId,
+    });
+
+    if (!error) {
+      setValue("");
     }
   }
 
@@ -35,7 +64,7 @@ export default function PageAddTask() {
       <button
         type="button"
         className={addButtonClassnames}
-        onClick={() => console.log("add task")}
+        onClick={handleAddTask}
       >
         <FiPlus />
       </button>

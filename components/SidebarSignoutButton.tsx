@@ -15,7 +15,7 @@ export default function SidebarSignOutButton() {
 
     return (
       <button
-        className="flex items-center mx-auto my-4 text-red-500 hover:text-red-700 text-base px-4 rounded-3xl"
+        className="flex items-center mx-auto my-7 text-red-500 hover:text-red-700 text-base px-4 rounded-3xl"
         onClick={handleSignOut}
       >
         <GoSignOut className="mr-2" />

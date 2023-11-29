@@ -14,21 +14,27 @@ export interface Database {
           created_at: string
           id: number
           is_daily: boolean | null
+          is_done: boolean
           is_important: boolean | null
+          title: string
           user_id: string
         }
         Insert: {
           created_at?: string
           id?: number
           is_daily?: boolean | null
+          is_done?: boolean
           is_important?: boolean | null
+          title: string
           user_id: string
         }
         Update: {
           created_at?: string
           id?: number
           is_daily?: boolean | null
+          is_done?: boolean
           is_important?: boolean | null
+          title?: string
           user_id?: string
         }
         Relationships: [

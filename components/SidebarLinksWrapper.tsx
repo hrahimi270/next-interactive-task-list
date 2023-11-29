@@ -27,12 +27,6 @@ export default function SidebarLinksWrapper() {
         icon={<FiHome />}
         count={3}
       />
-
-      <div className="block h-[2px] w-11/12 my-2 mx-auto bg-gray-100" />
-
-      <SidebarLink path="/" text="My custom list" count={1} />
-      <SidebarLink path="/" text="My custom list" count={2} />
-      <SidebarLink path="/" text="My custom list" count={3} />
     </div>
   );
 }

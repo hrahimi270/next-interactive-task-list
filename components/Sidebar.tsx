@@ -1,6 +1,5 @@
 import { createServerSupabaseClient } from "@/lib/supabase-server";
 import Logo from "./Logo";
-import SidebarActions from "./SidebarActions";
 import SidebarLinksWrapper from "./SidebarLinksWrapper";
 import SidebarSignOutButton from "./SidebarSignoutButton";
 
@@ -21,9 +20,6 @@ export default async function Sidebar() {
 
       {/* sidebar links */}
       <SidebarLinksWrapper />
-
-      {/* sidebar action to add custom lists */}
-      <SidebarActions />
     </aside>
   );
 }
